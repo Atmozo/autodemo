@@ -1,0 +1,52 @@
+# Java build output
+target/
+bin/
+build/
+
+# Maven / Gradle files
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+# IDE settings
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# VS Code and other editors
+.vscode/
+
+# Neovim swap files and backups
+*.swp
+*.swo
+*.bak
+
+# Logs
+*.log
+logs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Test output
+test-output/
+surefire-reports/
+
+# Selenium WebDriver downloads
+chromedriver
+geckodriver
+
+# Dependency directories (if any)
+node_modules/
+
+# Coverage reports
+coverage/
+jacoco.exec
+
