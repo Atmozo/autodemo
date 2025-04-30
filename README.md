@@ -109,7 +109,7 @@ Here's the full list of dependencies used in `pom.xml`:
 We use **`Apache POI`** to read from the `data.xlsx` file located in the project root or resources.  
 It contains:
 
-- ✅ Login credentials (`username`, `password`)
+- ✅ Login credentials (`standard_user`, `secret_sauce`)
 - ✅ Other test inputs like product names
 
 The `ExcelUtil` class reads the `.xlsx` sheet and feeds data into tests dynamically.
