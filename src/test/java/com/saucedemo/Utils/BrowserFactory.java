@@ -1,45 +1,40 @@
-package Utils;
+package com.saucedemo.Utils;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class  BrowserFactory {
+public class BrowserFactory {
 
-    static WebDriver driver;
+//    Initialize a browser
+    public static WebDriver driver;
 
-   // @BeforeTest
+//    Methode to start the browser (Select Multiple Browsers in the Parameter (url to change depending on the environment Prod/Dev))
+    @BeforeClass
+//    Public Static - Means something will never change
     public static WebDriver startBrowser(String browserChoice, String url) {
-        if (browserChoice.equalsIgnoreCase("ChrOME")) {
-            ChromeOptions chromeOptions = new ChromeOptions();
-//            chromeOptions.addArguments("--headless");
-            driver = new ChromeDriver(chromeOptions);
-        } else if (browserChoice.equalsIgnoreCase("internetexplore")) {
-            driver = new InternetExplorerDriver();
-        } else if (browserChoice.equalsIgnoreCase("firefox")) {
+        if ("chrome".equalsIgnoreCase(browserChoice)) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        } else if ("firefox".equalsIgnoreCase(browserChoice)) {
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
-        } else if (browserChoice.equalsIgnoreCase("safari")) {
-            driver = new SafariDriver();
-        } else {
+        } else if ("edge".equalsIgnoreCase(browserChoice)) {
+            WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
+        } else {
+//      Safari Driver as Default Browser
+            WebDriverManager.safaridriver().setup();
+            driver = new SafariDriver();
         }
         driver.manage().window().maximize();
         driver.get(url);
         return driver;
     }
-
-    @Test
-    public void test(){
-        startBrowser("......","https://www.saucedemo.com/");
-    }
-
 
 }
